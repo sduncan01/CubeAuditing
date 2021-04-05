@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25" zv="Cache for Windows (x86-64) 2018.1.2 (Build 309U)" ts="2021-03-26 19:37:24">
+<Class name="Sample.AuditQueryLog">
+<Super>%Persistent</Super>
+<TimeChanged>65829,69770.549699</TimeChanged>
+<TimeCreated>65829,68719.275936</TimeCreated>
+
+<Property name="queryDateTime">
+<Description>
+Usage: set ^DeepSee.AuditQueryCode = "do ##class(Sample.AuditQueryLog).InsertQuery(.%dsResultSet,%dsQueryText,%dsCubeName)"</Description>
+<Type>%TimeStamp</Type>
+</Property>
+
+<Property name="username">
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="100"/>
+</Property>
+
+<Property name="cubeName">
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="200"/>
+</Property>
+
+<Property name="queryText">
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="30000"/>
+</Property>
+
+<Property name="processId">
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="20"/>
+</Property>
+
+<Property name="queryKey">
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="50"/>
+</Property>
+
+<Parameter name="DSTIME">
+<Default>AUTO</Default>
+</Parameter>
+
+<Method name="InsertQuery">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>resultSet:%DeepSee.ResultSet,queryText:%String,cubeName:%String</FormalSpec>
+<ReturnType>%Status</ReturnType>
+<Implementation><![CDATA[
+	set queryDateTime = $zdt($h,3)
+	set queryKey = resultSet.%GetQueryKey()
+	set processId = $job
+	set username = $get(%dsUserName,$username)
+	set cubeName = $zconvert(cubeName,"l")
+	
+	set currQuery = ..%New()
+	set currQuery.queryDateTime = queryDateTime
+	set currQuery.username = username
+	set currQuery.cubeName = cubeName
+	set currQuery.queryText = queryText
+	set currQuery.processId = processId
+	set currQuery.queryKey = queryKey
+	
+	set sc = currQuery.%Save()
+	
+	return sc
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Sample.AuditQueryLogD</DataLocation>
+<DefaultData>AuditQueryLogDefaultData</DefaultData>
+<IdLocation>^Sample.AuditQueryLogD</IdLocation>
+<IndexLocation>^Sample.AuditQueryLogI</IndexLocation>
+<StreamLocation>^Sample.AuditQueryLogS</StreamLocation>
+<Data name="AuditQueryLogDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>queryDateTime</Value>
+</Value>
+<Value name="3">
+<Value>username</Value>
+</Value>
+<Value name="4">
+<Value>cubeName</Value>
+</Value>
+<Value name="5">
+<Value>queryText</Value>
+</Value>
+<Value name="6">
+<Value>processId</Value>
+</Value>
+<Value name="7">
+<Value>queryKey</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+</Export>
