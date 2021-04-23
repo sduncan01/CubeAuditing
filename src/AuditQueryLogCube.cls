@@ -1,19 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Export generator="Cache" version="25" zv="Cache for Windows (x86-64) 2018.1.2 (Build 309U)" ts="2021-03-26 19:37:13">
-<Class name="Sample.AuditQueryLogCube">
-<Description>
-</Description>
-<ProcedureBlock>1</ProcedureBlock>
-<Super>%DeepSee.CubeDefinition</Super>
-<TimeChanged>65829,70605.299717</TimeChanged>
-<TimeCreated>65829,70028.216906</TimeCreated>
-<DependsOn>Sample.AuditQueryLog</DependsOn>
+/// 
+Class Sample.AuditQueryLogCube Extends %DeepSee.CubeDefinition [ DependsOn = Sample.AuditQueryLog, ProcedureBlock ]
+{
 
-<XData name="Cube">
-<Description>
-Cube definition from Architect.</Description>
-<XMLNamespace>http://www.intersystems.com/deepsee</XMLNamespace>
-<Data><![CDATA[
+/// Cube definition from Architect.
+XData Cube [ XMLNamespace = "http://www.intersystems.com/deepsee" ]
+{
 <cube xmlns="http://www.intersystems.com/deepsee" name="AuditQueryLogCube" displayName="AuditQueryLogCube" disabled="false" abstract="false" sourceClass="Sample.AuditQueryLog" countMeasureName="%COUNT" bucketSize="8" bitmapChunkInMemory="false" precompute="0" disableListingGroups="false">
   <dimension name="cube" disabled="false" hasAll="false" allCaption="All cube" allDisplayName="cube" type="data" hidden="false" showHierarchies="default">
     <hierarchy name="H1" disabled="false" hidden="false">
@@ -64,10 +55,8 @@ Cube definition from Architect.</Description>
   <listing name="AuditQueryLog Details" disabled="false" listingType="table" fieldList="%ID,cubeName,queryDateTime,username,queryText,processId">
   </listing>
 </cube>
-]]></Data>
-</XData>
+}
 
-<Parameter name="DOMAIN">
-</Parameter>
-</Class>
-</Export>
+Parameter DOMAIN;
+
+}
