@@ -1,4 +1,4 @@
-/// 
+/// Cube based on MDX query auditing data from Sample.AuditQueryLog
 Class Sample.AuditQueryLogCube Extends %DeepSee.CubeDefinition [ DependsOn = Sample.AuditQueryLog, ProcedureBlock ]
 {
 
