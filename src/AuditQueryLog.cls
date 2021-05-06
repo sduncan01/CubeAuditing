@@ -1,7 +1,6 @@
 Class Sample.AuditQueryLog Extends %Persistent
 {
 
-/// Usage: set ^DeepSee.AuditQueryCode = "do ##class(Sample.AuditQueryLog).InsertQuery(.%dsResultSet,%dsQueryText,%dsCubeName)"
 Property queryDateTime As %TimeStamp;
 
 Property username As %String(MAXLEN = 100);
@@ -16,6 +15,7 @@ Property queryKey As %String(MAXLEN = 50);
 
 Parameter DSTIME = "AUTO";
 
+/// Usage: set ^DeepSee.AuditQueryCode = "do ##class(Sample.AuditQueryLog).InsertQuery(.%dsResultSet,%dsQueryText,%dsCubeName)"
 ClassMethod InsertQuery(resultSet As %DeepSee.ResultSet, queryText As %String, cubeName As %String) As %Status
 {
 	set queryDateTime = $zdt($h,3)
