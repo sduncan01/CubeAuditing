@@ -15,14 +15,14 @@ Property queryKey As %String(MAXLEN = 50);
 
 Parameter DSTIME = "AUTO";
 
-/// Invoke ZPM methode
+/// Init method to be invoked by ZPM
 ClassMethod Init() As %Status
 {
 	set ^DeepSee.AuditQueryCode = "do ##class(Sample.AuditQueryLog).InsertQuery(.%dsResultSet,%dsQueryText,%dsCubeName)"
 	quit $$$OK
 }
 
-/// Usage: set ^DeepSee.AuditQueryCode = "do ##class(Sample.AuditQueryLog).InsertQuery(.%dsResultSet,%dsQueryText,%dsCubeName)"
+/// Run the Init() method of this class to have this method triggered when an MDX query is run in this namespace
 ClassMethod InsertQuery(resultSet As %DeepSee.ResultSet, queryText As %String, cubeName As %String) As %Status
 {
 	set queryDateTime = $zdt($h,3)
