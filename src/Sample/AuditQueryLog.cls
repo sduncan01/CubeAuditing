@@ -15,7 +15,7 @@ Property queryKey As %String(MAXLEN = 50);
 
 Parameter DSTIME = "AUTO";
 
-/// Init method to be invoked by ZPM
+/// Init method - this will be invoked when installing via ZPM, or can be run manually on setup
 ClassMethod Init() As %Status
 {
 	set ^DeepSee.AuditQueryCode = "do ##class(Sample.AuditQueryLog).InsertQuery(.%dsResultSet,%dsQueryText,%dsCubeName)"
