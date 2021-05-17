@@ -4,7 +4,7 @@
 <Module>
  <Name>CubeAuditing</Name>
   <Version>1.0.2</Version>
-  <Description>CubeAuditing</Description>
+  <Description>Samples for auditing queries on IRIS BI cubes and analyzing audit data</Description>
   <Packaging>module</Packaging>
   <SourcesRoot>src</SourcesRoot> 
   <Resource Name="Sample.PKG"/>
