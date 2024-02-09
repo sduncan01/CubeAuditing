@@ -42,5 +42,3 @@ or using **WebTerminal**
 ```
 http://localhost:42773/terminal/
 ```
-## Documentation and Discussion
-See the [Article on InterSystems Developer Community](https://community.intersystems.com/post/identicon-generator-cach%C3%A9)
